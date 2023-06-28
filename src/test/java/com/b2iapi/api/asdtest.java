@@ -3,7 +3,6 @@ package com.b2iapi.api;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
@@ -28,6 +27,5 @@ public class asdtest {
             os.write(out);
         }
         System.out.println(new String(out,StandardCharsets.UTF_8));
-// Do something with http.getInputStream()
     }
 }

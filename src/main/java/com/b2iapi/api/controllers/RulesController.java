@@ -1,4 +1,4 @@
-package com.b2iapi.api;
+package com.b2iapi.api.controllers;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.b2iapi.api.game.Moves;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;

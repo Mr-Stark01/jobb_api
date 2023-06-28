@@ -1,4 +1,4 @@
-package com.b2iapi.api;
+package com.b2iapi.api.game;
 
 import java.util.Map;
 
@@ -9,6 +9,8 @@ public enum Moves {
     private final String name;
     private final int id;
     public static final Map<String,String> rules;
+    // What beats what rule set.
+    // It's unclear to me exactly what kind of rule set is expected should there be a proper written game rule set formatted in a json way?
     static {
         rules = Map.of("rock", "scissors", "paper", "rock", "scissors", "paper");
     }
