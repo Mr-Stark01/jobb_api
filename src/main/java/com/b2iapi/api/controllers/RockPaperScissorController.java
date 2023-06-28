@@ -19,9 +19,8 @@ public class RockPaperScissorController {
     public ResponseEntity<Map<Object,String>>play (@RequestBody() String userInput,@RequestParam(defaultValue = "false") String explain){
         JsonParser parser = JsonParserFactory.getJsonParser();
         userInput=parser.parseMap(userInput).get("move").toString();
-        Random random=new Random();
-        Map<Object,String> output=new HashMap<>();
-        int cpuChoice=random.nextInt(3);
+        Map<Object,String> output = new HashMap<>();
+        int cpuChoice = new Random().nextInt(3);
         output.put(Moves.match(userInput, Moves.getName(cpuChoice)), Moves.getName(cpuChoice));
         if(explain.equalsIgnoreCase("true")){
             output.put(userInput, Moves.rules.get(userInput.toLowerCase()));
