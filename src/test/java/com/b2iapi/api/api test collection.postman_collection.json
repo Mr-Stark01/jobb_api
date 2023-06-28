@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "3a536288-41d3-478a-890a-53d5de6d5bc1",
+		"name": "api test collection",
+		"description": "adsf+",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23218642"
+	},
+	"item": [
+		{
+			"name": "explain false",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Answer to be length of 1\",()=>{\r",
+							"    console.log(pm.response.json());\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"move\":\"rock\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/play?explain=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"play"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "explain true",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Answer to be length of 1\",()=>{\r",
+							"    console.log(pm.response.json());\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"move\":\"paper\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/play?explain=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"play"
+					],
+					"query": [
+						{
+							"key": "explain",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "no options",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Answer to be length of 3\",()=>{\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(3);\r",
+							"    pm.expect(pm.response.json().scissors).is.to.equal('paper');\r",
+							"    pm.expect(pm.response.json().paper).is.to.equal('rock');\r",
+							"    pm.expect(pm.response.json().rock).is.to.equal('scissors');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rules/rock",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Correct answer length and response\",()=>{\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(1);\r",
+							"    pm.expect(pm.response.json().rock).is.to.equal('scissors');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/rules/rock",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rules",
+						"rock"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "{{options}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rules/paper",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Correct answer length and response\",()=>{\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(1);\r",
+							"    pm.expect(pm.response.json().paper).is.to.equal('rock');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rules/paper",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rules",
+						"paper"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rules/scissors",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Correct answer length and response\",()=>{\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(1);\r",
+							"    pm.expect(pm.response.json().scissors).is.to.equal('paper');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rules/scissors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rules",
+						"scissors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/rules/asd",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Test for json answer\",function(){\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.response.to.be.jsonBody();\r",
+							"})\r",
+							"pm.test(\"Answer to be length of 3\",()=>{\r",
+							"    pm.expect(Object.keys(pm.response.json())).length(3);\r",
+							"    pm.expect(pm.response.json().scissors).is.to.equal('paper');\r",
+							"    pm.expect(pm.response.json().paper).is.to.equal('rock');\r",
+							"    pm.expect(pm.response.json().rock).is.to.equal('scissors');\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/rules/asd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rules",
+						"asd"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
